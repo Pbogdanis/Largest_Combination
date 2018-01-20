@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 public class Main{
     
-	 //List imported by user
+	//List imported by user
 	static ArrayList<Integer> num_list = new ArrayList<Integer>();
 	public static String perms[] ;
 	public static int counter = -1;
@@ -30,10 +30,10 @@ public class Main{
 		Integer factorial = Factorial(length);
 		String perms[] = new String[factorial];
 		Arrays.fill(perms, "0");
-		System.out.println("Factorial " + factorial.toString());
+		//System.out.println("Factorial " + factorial.toString());
 		//Find the permutations
 		Permutations(num_list,0);
-		System.out.println("The biggest combination is: " + biggest);
+		System.out.println("The largest combination is: " + biggest);
 		return biggest;
 	}
 	
@@ -52,19 +52,19 @@ public class Main{
 		  String newperm = "";
 		  if(index >= numbers.size() - 1){ //If we are at the last element - nothing left to permute
 		  //Print the array
-		  System.out.print("[");
+		  //System.out.print("[");
 		  for(int i = 0; i < numbers.size() - 1; i++){
-		            System.out.print(numbers.get(i) + ", ");
+		            //System.out.print(numbers.get(i) + ", ");
 		            newperm = newperm.concat(numbers.get(i).toString());
 		        }
 		  if(numbers.size() > 0){
-			  System.out.print(numbers.get(numbers.size() - 1));
+			  //System.out.print(numbers.get(numbers.size() - 1));
 			  newperm = newperm.concat(String.valueOf(numbers.get(numbers.size() - 1)));
 		  }
 		  
-		  System.out.println("]");
+		  //System.out.println("]");
 		  if(!newperm.equals("")){
-			  System.out.println(newperm);
+			  //System.out.println(newperm);
 			  if(Integer.parseInt(newperm)>Integer.parseInt(biggest)){
 				  biggest = newperm;
 			  }
