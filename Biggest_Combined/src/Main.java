@@ -25,10 +25,10 @@ public class Main{
 
 		//First we need to find the number of permutations we will need
 		//Factorial based on list length
-		Integer length = sequence.size();
-		Integer factorial = Factorial(length);
-		String perms[] = new String[factorial];
-		Arrays.fill(perms, "0");
+		//Integer length = sequence.size();
+		//Integer factorial = Factorial(length);
+		//String perms[] = new String[factorial];
+		//Arrays.fill(perms, "0");
 		//System.out.println("Factorial " + factorial.toString());
 		//Find the permutations
 		Combinations(num_list);
@@ -46,26 +46,42 @@ public class Main{
 		return fact;
 	}
 	
+	
 	public static void Combinations(ArrayList<Integer> numbers){
 		
-		String temp_max = "-1",first_comb,second_comb;
+		String temp_max = "",first_comb,second_comb;
 		
-		
-		for(int i=0; i<numbers.size() - 1; i++){
+		for (int j=0; j<numbers.size(); j++){
+			for(int i=0; i<numbers.size() - 1; i++){
 			
-			first_comb = numbers.get(i).toString().concat(numbers.get(i+1).toString());
-			second_comb = numbers.get(i+1).toString().concat(numbers.get(i).toString());
-			if(Integer.parseInt(first_comb)>Integer.parseInt(second_comb)){
-				temp_max = first_comb;
-				
+				first_comb = numbers.get(i).toString().concat(numbers.get(i+1).toString());
+				second_comb = numbers.get(i+1).toString().concat(numbers.get(i).toString());
+				if(Integer.parseInt(first_comb)>Integer.parseInt(second_comb)){
+					//Do nothing
+					//int t = numbers.get(i);
+					//numbers.set(i, numbers.get(i+1));
+					//numbers.set(i + 1, t);
+				}
+				else {
+					//Swap elements
+					int t = numbers.get(i+1);
+					numbers.set(i+1, numbers.get(i));
+					numbers.set(i, t);
+				}
+				//numbers.set(i+1, Integer.parseInt(temp_max));
+				//System.out.println("The largest between " + first_comb + " and " + second_comb + " is " + temp_max );
 			}
-			else {
-				temp_max = second_comb;
+			
 			}
-			numbers.set(i+1, Integer.parseInt(temp_max));
-			System.out.println("The largest between " + first_comb + " and " + second_comb + " is " + temp_max );
-		}
-		biggest = temp_max;
-		return ;
+			for (int k=0; k<numbers.size(); k++){
+				temp_max = temp_max.concat(String.valueOf(numbers.get(k)));
+			}
+			biggest = temp_max;
+			
+			return ;
+	
+			
+			}
 	}
-}
+	
+
