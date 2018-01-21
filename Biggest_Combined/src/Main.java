@@ -4,8 +4,6 @@ public class Main{
     
 	//List imported by user
 	static ArrayList<Integer> num_list = new ArrayList<Integer>();
-	public static String perms[] ;
-	public static int counter = -1;
 	public static String biggest = "0";
 	//Scanner for input
 	static Scanner scanner = new Scanner(System.in);
@@ -23,7 +21,8 @@ public class Main{
 	public static String Output(ArrayList<Integer> sequence)
 	{
 		
-		//The function will cycle through all possible combinations and return the biggest of them
+		//The function will compare all the combinations in the list. 
+
 		//First we need to find the number of permutations we will need
 		//Factorial based on list length
 		Integer length = sequence.size();
@@ -32,7 +31,7 @@ public class Main{
 		Arrays.fill(perms, "0");
 		//System.out.println("Factorial " + factorial.toString());
 		//Find the permutations
-		Permutations(num_list,0);
+		Combinations(num_list);
 		System.out.println("The largest combination is: " + biggest);
 		return biggest;
 	}
@@ -47,46 +46,26 @@ public class Main{
 		return fact;
 	}
 	
-	public static void Permutations(ArrayList<Integer> numbers, int index) {
-		  counter += 1;
-		  String newperm = "";
-		  if(index >= numbers.size() - 1){ //If we are at the last element - nothing left to permute
-		  //Print the array
-		  //System.out.print("[");
-		  for(int i = 0; i < numbers.size() - 1; i++){
-		            //System.out.print(numbers.get(i) + ", ");
-		            newperm = newperm.concat(numbers.get(i).toString());
-		        }
-		  if(numbers.size() > 0){
-			  //System.out.print(numbers.get(numbers.size() - 1));
-			  newperm = newperm.concat(String.valueOf(numbers.get(numbers.size() - 1)));
-		  }
-		  
-		  //System.out.println("]");
-		  if(!newperm.equals("")){
-			  //System.out.println(newperm);
-			  if(Integer.parseInt(newperm)>Integer.parseInt(biggest)){
-				  biggest = newperm;
-			  }
-				  
-		  }
-		  
-		  return;
-		  }
-		  
-		  for(int i = index; i < numbers.size(); i++){ //For each index in the sub array numbers[index...end]
-			    //Swap the elements at indices index and i
-		        int t = numbers.get(index);
-		        numbers.set(index,numbers.get(i));
-		        numbers.set(i, t);
-
-		        //Recurse on the sub array numbers[index+1...end]
-		        Permutations(numbers, index+1);
-
-		        //Swap the elements back
-		        t = numbers.get(index);
-		        numbers.set(index,numbers.get(i));
-		        numbers.set(i, t);
-		    }
+	public static void Combinations(ArrayList<Integer> numbers){
+		
+		String temp_max = "-1",first_comb,second_comb;
+		
+		
+		for(int i=0; i<numbers.size() - 1; i++){
+			
+			first_comb = numbers.get(i).toString().concat(numbers.get(i+1).toString());
+			second_comb = numbers.get(i+1).toString().concat(numbers.get(i).toString());
+			if(Integer.parseInt(first_comb)>Integer.parseInt(second_comb)){
+				temp_max = first_comb;
+				
+			}
+			else {
+				temp_max = second_comb;
+			}
+			numbers.set(i+1, Integer.parseInt(temp_max));
+			System.out.println("The largest between " + first_comb + " and " + second_comb + " is " + temp_max );
+		}
+		biggest = temp_max;
+		return ;
 	}
 }
