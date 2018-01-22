@@ -14,8 +14,16 @@ public class Main{
     {
 		 System.out.println("Please enter the sequence of numbers you want me to consume: ");
 		 while (scanner.hasNextInt()) {
+			    //Check for non-negative integers
 			    int i = scanner.nextInt();
-			    num_list.add(i);
+			    if(i<0){
+			    	System.out.println("Please, enter non-negative integers only.");
+			    	System.out.println("Please enter the sequence of numbers you want me to consume: ");
+			    }
+			    else{
+			    	num_list.add(i);
+			    }
+			    
 			}
 		 Output(num_list);
 	}
@@ -89,4 +97,5 @@ public class Main{
 		        numbers.set(i, t);
 		    }
 	}
+	
 }
