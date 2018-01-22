@@ -38,7 +38,7 @@ public class Main{
 		Integer factorial = Factorial(length);
 		String perms[] = new String[factorial];
 		Arrays.fill(perms, "0");
-		//System.out.println("Factorial " + factorial.toString());
+		
 		//Find the permutations
 		Permutations(num_list,0);
 		System.out.println("The largest combination is: " + biggest);
@@ -59,20 +59,19 @@ public class Main{
 		  counter += 1;
 		  String newperm = "";
 		  if(index >= numbers.size() - 1){ //If we are at the last element - nothing left to permute
-		  //Print the array
-		  //System.out.print("[");
+		  
 		  for(int i = 0; i < numbers.size() - 1; i++){
-		            //System.out.print(numbers.get(i) + ", ");
-		            newperm = newperm.concat(numbers.get(i).toString());
+			  
+		          newperm = newperm.concat(numbers.get(i).toString());
 		        }
 		  if(numbers.size() > 0){
-			  //System.out.print(numbers.get(numbers.size() - 1));
+			  
 			  newperm = newperm.concat(String.valueOf(numbers.get(numbers.size() - 1)));
 		  }
 		  
-		  //System.out.println("]");
+		  
 		  if(!newperm.equals("")){
-			  //System.out.println(newperm);
+			  
 			  if(Integer.parseInt(newperm)>Integer.parseInt(biggest)){
 				  biggest = newperm;
 			  }
@@ -83,7 +82,7 @@ public class Main{
 		  }
 		  
 		  for(int i = index; i < numbers.size(); i++){ //For each index in the sub array numbers[index...end]
-			    //Swap the elements at indices index and i
+			//Swap the elements at indices index and i
 		        int t = numbers.get(index);
 		        numbers.set(index,numbers.get(i));
 		        numbers.set(i, t);
